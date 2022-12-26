@@ -33,6 +33,27 @@ class UserService {
       throw { error };
     }
   }
+  //basically in this funtion we are doing like checking whether the token is verified or not 
+  //and there might be the case that the token is verified but the user is deleted in that case we can also throw error
+  async isAuthenticate(token) {
+    try {
+      const response = this.verifyToken(token);
+      if (!response)
+        throw {
+          error: "invalid token",
+        };
+      const user = this.userRepository.getById(response.id);
+      if (!user)
+        throw {
+          error: "no user with this token present",
+        };
+
+      return user.id;
+    } catch (error) {
+      console.log("there is error in user authentication");
+      throw{error}
+    }
+  }
 
   createToken(user) {
     try {
