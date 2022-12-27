@@ -7,14 +7,20 @@ const app = express();
 const db = require("./models/index");
 const bcrypt = require("bcrypt");
 //  const UserRepository=require('./repository/user-repository');
-const prepareAndStartServer = () => {
+const prepareAndStartServer = async () => {
   app.use(bodyparser.json());
   app.use(bodyparser.urlencoded({ extended: true }));
   app.use("/api", apiroutes);
   app.listen(PORT, async () => {
     console.log(`server started ${PORT}`);
-    if (process.env.DB_SYNC) {
-      db.sequelize.sync({ alter: true });
+
+    try {
+      if (process.env.DB_SYNC) {
+        db.sequelize.sync({ alter: true });
+      }
+    } catch (error) {
+      console.log(error);
+      
     }
     // const repo=new UserRepository();
     // const response =await   repo.getById(2);
