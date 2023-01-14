@@ -1,7 +1,7 @@
 {
   "name": "authservice",
   "version": "1.0.0",
-  "description": "",
+  "description": "this is the authservice",
   "main": "index.js",
   "scripts": {
     "start": "npx nodemon src/index.js"
@@ -19,5 +19,14 @@
     "nodemon": "^2.0.20",
     "sequelize": "^6.28.0",
     "sequelize-cli": "^6.5.2"
-  }
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shubhag12/auth_service.git"
+  },
+  "bugs": {
+    "url": "https://github.com/shubhag12/auth_service/issues"
+  },
+  "homepage": "https://github.com/shubhag12/auth_service#readme"
 }

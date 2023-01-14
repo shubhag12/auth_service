@@ -55,7 +55,7 @@ class UserService {
     }
   }
 
-  createToken(user) {
+  async createToken(user) {
     try {
       const result = jwt.sign(user, JWT_KEY, { expiresIn: "1h" });
       return result;
@@ -64,7 +64,7 @@ class UserService {
       throw { error };
     }
   }
-  verifyToken(token) {
+  async verifyToken(token) {
     try {
       const result = jwt.verify(token, JWT_KEY);
       return result;
@@ -74,7 +74,7 @@ class UserService {
     }
   }
 
-  checkPassword(plainPassword, encryptedPassword) {
+  async checkPassword(plainPassword, encryptedPassword) {
     try {
       return bcrypt.compareSync(plainPassword, encryptedPassword);
     } catch (error) {

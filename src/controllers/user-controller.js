@@ -19,7 +19,7 @@ const create = async (req, res) => {
       success: false,
       message: "not able to create a user",
       err: error,
-    });
+    }); 
   }
 };
 const signIn=async(req,res)=>{
