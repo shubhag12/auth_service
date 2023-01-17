@@ -55,7 +55,7 @@ class UserService {
     }
   }
 
-  async createToken(user) {
+ createToken(user) {
     try {
       const result = jwt.sign(user, JWT_KEY, { expiresIn: "1h" });
       return result;
@@ -64,17 +64,17 @@ class UserService {
       throw { error };
     }
   }
-  async verifyToken(token) {
+   verifyToken(token) {
     try {
       const result = jwt.verify(token, JWT_KEY);
       return result;
     } catch (error) {
-      console.log("something went wrong in token validation");
-      throw { error };
+      console.log("something went wrong in token validation",error);
+      throw error ;
     }
   }
 
-  async checkPassword(plainPassword, encryptedPassword) {
+   checkPassword(plainPassword, encryptedPassword) {
     try {
       return bcrypt.compareSync(plainPassword, encryptedPassword);
     } catch (error) {

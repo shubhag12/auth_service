@@ -46,7 +46,7 @@ const signIn=async(req,res)=>{
 }
 const isAuthenticated=async(req,res)=>{
   try {
-    const token=req.headers['x-access-token'];
+    const token=req.headers['x-access-tokens'];
     const response=await userService.isAuthenticate(token);
     return res.status(200).json({
       success:true,
